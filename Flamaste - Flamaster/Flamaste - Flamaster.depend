@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1539808251 source:c:\users\krzysiek\desktop\picosdlubiesb\spoj.com\flamaste - flamaster\main.cpp
+	<iostream>
+	<string>
+	<algorithm>
+
