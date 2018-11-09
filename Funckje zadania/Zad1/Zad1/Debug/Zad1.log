@@ -1,0 +1,7 @@
+﻿  Zad1.cpp
+c:\users\krzysiek\desktop\programy git\funckje zadania\zad1\zad1\zad1.cpp(15): warning C4244: "argument": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+  Zad1.vcxproj -> C:\Users\Krzysiek\Desktop\programy git\Funckje zadania\Zad1\Debug\Zad1.exe

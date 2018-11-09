@@ -1,3 +1,4 @@
-﻿  pch.cpp
-  Pd1.cpp
-  Pd1.vcxproj -> C:\Users\Krzysiek\Desktop\programy git\Spiralka\spiralaliczb\Pd1\Debug\Pd1.exe
+﻿  Pd1.cpp
+c:\users\krzysiek\desktop\programy git\spiralka\spiralaliczb\pd1\pd1\pd1.cpp(125): error C2369: "pierwsze": zmiana definicji; różne indeksy
+  c:\users\krzysiek\desktop\programy git\spiralka\spiralaliczb\pd1\pd1\pd1.cpp(24): note: zobacz deklarację „pierwsze”
+c:\users\krzysiek\desktop\programy git\spiralka\spiralaliczb\pd1\pd1\pd1.cpp(132): error C3863: nie można przydzielać typu tablicy „int [11]”

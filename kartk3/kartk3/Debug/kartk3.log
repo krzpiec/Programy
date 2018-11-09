@@ -1,0 +1,9 @@
+﻿  kartk3.cpp
+c:\users\krzysiek\desktop\programy git\kartk3\kartk3\kartk3.cpp(22): warning C4244: "argument": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+c:\users\krzysiek\desktop\programy git\kartk3\kartk3\kartk3.cpp(40): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\kartk3\kartk3\kartk3.cpp(43): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  kartk3.vcxproj -> C:\Users\Krzysiek\Desktop\programy git\kartk3\Debug\kartk3.exe
