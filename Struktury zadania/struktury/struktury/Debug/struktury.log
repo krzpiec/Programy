@@ -1,0 +1,21 @@
+﻿  pch.cpp
+  Funkcje.cpp
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(31): warning C4244: "argument": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(50): warning C4390: ";": znaleziono kontrolowaną pustą instrukcję; czy to było zamierzone?
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(74): warning C4244: "=": konwersja z "double" do "int", możliwa utrata danych
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(83): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(85): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(100): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(102): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(137): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(152): warning C4838: konwersja z „const int” do „double” wymaga konwersji zawężającej
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(156): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(158): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+d:\gitglowny\programy\struktury zadania\struktury\struktury\funkcje.cpp(160): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  struktury.cpp
+  Generowanie kodu...
+  struktury.vcxproj -> D:\gitglowny\Programy\Struktury zadania\struktury\Debug\struktury.exe
