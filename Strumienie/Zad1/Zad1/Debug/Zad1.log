@@ -1,0 +1,24 @@
+﻿  Funckje.cpp
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(17): warning C4244: "argument": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(70): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(79): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(86): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(103): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(138): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(149): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(151): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(154): warning C4018: ">": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(175): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(177): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(184): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(186): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(195): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(197): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(216): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(230): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\krzysiek\desktop\programy git\strumienie\zad1\zad1\funckje.cpp(240): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Zad1.vcxproj -> C:\Users\Krzysiek\Desktop\programy git\Strumienie\Zad1\Debug\Zad1.exe
