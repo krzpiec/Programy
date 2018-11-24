@@ -1,3 +1,5 @@
-﻿  ConsoleApplication3.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Katalog pośredni (Debug\) zawiera pliki udostępnione z innego projektu (ConsoleApplication3.vcxproj). Może to spowodować niepoprawne zachowanie podczas oczyszczania i ponownej kompilacji.
+  pch.cpp
+  ConsoleApplication3.cpp
 c:\users\krzysiek\desktop\programy git\hackerrank\consoleapplication3\consoleapplication3\consoleapplication3.cpp(24): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-  ConsoleApplication3.vcxproj -> C:\Users\Krzysiek\Desktop\programy git\HackerRank\ConsoleApplication3\Debug\ConsoleApplication3.exe
+  ConsoleApplication3.vcxproj -> C:\Users\Krzysiek\Desktop\programy git\HackerRank\ConsoleApplication3\Debug\Egzamin.exe
