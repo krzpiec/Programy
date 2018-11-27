@@ -2,7 +2,6 @@
 #ifndef Funkcje_hpp
 #define Funckje_hpp
 
-
 const int W = 7;
 const int K = 5;
 

@@ -51,7 +51,7 @@ bool hetman (const std::string& nazwa)
 			sumaw += tab[wiersze][kolumny];
 			if (sumaw > 1)
 			{
-				std::cout << "Nawierszach";
+				std::cout << "Na wierszach";
 				return false;
 			}
 
@@ -80,8 +80,7 @@ bool hetman (const std::string& nazwa)
 			sumaprz += tab[a][b];
 			if (sumaprz > 1)
 			{
-				std::cout << "Na przekatnych1";
-				std::cout << "NUmer:" << i;
+				std::cout << "Na przekatnych 1";
 				return false;
 			}
 			a--;
@@ -92,11 +91,11 @@ bool hetman (const std::string& nazwa)
 	//pierwsza czesc przekatnych skonczona
 
 	///przekatne (7,1)|(1,7) do (7,7)
-	for (int i = 6; i >= 0; i--)
+	for (int i = 0; i <7; i++)
 	{
 		sumaprz = 0;
 		a = 7;
-		b = 0;
+		b = i;
 		while (b <= 7)
 		{
 			sumaprz += tab[a][b];
@@ -126,7 +125,6 @@ bool hetman (const std::string& nazwa)
 			if (sumaprz > 1)
 			{
 				std::cout << "Na przekatnych 3";
-				std::cout << i;
 				return false;
 			}
 			a--;
@@ -148,8 +146,7 @@ bool hetman (const std::string& nazwa)
 			sumaprz += tab[a][b];
 			if (sumaprz > 1)
 			{
-				std::cout << "Na przekatnych4";
-				std::cout << i;
+				std::cout << "Na przekatnych 4";
 				return false;
 			}
 			a--;
