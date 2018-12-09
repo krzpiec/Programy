@@ -5,7 +5,7 @@
 #include <vector>
 #include "Funkcje.h"
 
-void wypelnij(std::vector<int>& liczby, const int n)
+void wypelnij(std::vector<int>& liczby, const int n)/// wypelnia wektor pseudolos liczbami
 {
 	std::default_random_engine silnik;
 	silnik.seed(std::chrono::system_clock::now().time_since_epoch().count());
@@ -95,7 +95,7 @@ void dodajdopos(element * & phead, element * & ptail, const typ wart)
 
 	else
 	{
-		while ((p->pnext != nullptr) && (p->pnext->wartosc < wart)) //dopóki nie wyjde z listy lub nie znajde elementu
+		while ((p->pnext != nullptr) && (p->pnext->wartosc < wart)) //dopóki nie wyjde z listy lub nie znajde elementu na nastepnej pozycji
 			p = p->pnext;
 
 		if (p->pnext == nullptr) //wstawiam na koniec
@@ -194,10 +194,10 @@ void usunE(element *& phead, const typ wart) //funckja dodana na potrzeby f.prze
 	}
 }
 
-void *przenies(element *& pheadwej, element *& pheadwyj, element *& ptailwej, element *& ptailwyj, const typ wart)
+void przenies(element *& pheadwej, element *& pheadwyj, element *& ptailwej, element *& ptailwyj, const typ wart)
 {
 	if (pheadwej == nullptr) //pusto
-		return ptailwej;
+		return;
 	int licz = 0;
 	auto ph = pheadwej;
 		while (ph) //ilosc elementow w liscie
@@ -242,4 +242,14 @@ void sort(element *& phead, element *& ptail)
 				std::swap(ph->wartosc, j->wartosc);
 		}
 	}
+}
+
+void ostnapocz(element *& phead, element *& ptail)
+{
+	const typ temp = ptail->wartosc;
+	auto pt = ptail->pprev;
+	delete ptail;
+	ptail = pt;
+	ptail->pnext = nullptr;
+	dodajnaPocz(phead, ptail, temp);
 }

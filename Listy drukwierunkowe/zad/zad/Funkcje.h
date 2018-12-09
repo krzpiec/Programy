@@ -29,11 +29,13 @@ element *znajdz(element *phead, const typ wart);
 
 void usunE(element *& phead, const typ wart);
 
-void *przenies(element *& pheadwej, element *& pheadwyj, element *& ptailwej, element *& ptailwyj, const typ wart);
+void przenies(element *& pheadwej, element *& pheadwyj, element *& ptailwej, element *& ptailwyj, const typ wart);
 
 void usunliste(element *& phead, element *& ptail);
 
 void sort(element *& phead, element *& ptail);
+
+void ostnapocz(element *& phead, element *& ptail);
 
 #endif // !FUNKCJE_H
 
