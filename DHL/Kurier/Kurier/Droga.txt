@@ -1,0 +1,2 @@
+Droga: 81
+Kolejnosc odwiedziania miast: 11->12->13->15->14->11

@@ -44,9 +44,10 @@ void wypiszodpocz(element * phead)
 
 	while (temp)
 	{
-		std::cout << temp->wartosc << std::endl;
+		std::cout << temp->wartosc <<" ";
 		temp = temp->pnext;
 	}
+	std::cout << std::endl;
 	std::cout << "STOP" << std::endl;
 }
 
@@ -61,9 +62,10 @@ void wypiszodkon(element * ptail)
 	std::cout << "START" << std::endl;
 	while (ptail)
 	{
-		std::cout << ptail->wartosc << std::endl;;
+		std::cout << ptail->wartosc << " ";
 		ptail = ptail->pprev;
 	}
+	std::cout << std::endl;
 	std::cout << "STOP" << std::endl;
 }
 
