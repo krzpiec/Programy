@@ -7,7 +7,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
-#include <vld.h>
+//#include <vld.h>
 #include "Funkcje.h"
 
 
@@ -367,16 +367,19 @@ void algorytm(miasto * prootm, miasto  *prootw, miasto * start, int & suma, std:
 		miasto * x = minimum(temp->pkorzenpol, prootm, suma);
 		kolejnosc += std::to_string(temp->nazwa);
 		kolejnosc += "->";
-		//std::cout << kolejnosc << std::endl;
+		std::cout << kolejnosc << std::endl;
 		if (x == nullptr || x->nazwa == startpkt )
 		{	
+			//std::cout << "wszedl" << std::endl;
 			ostatni = minimalnepol(temp->pkorzenpol);
 				usunMinPol(temp->pkorzenpol);
 				x = minimum(temp->pkorzenpol, prootm, suma);
 				
 		}		
+		//std::cout << "Przenosi: " << temp->nazwa << std::endl;
 			przenies(prootm, temp->nazwa, prootw);
 			p = x;
+			//std::cout << "X to: " << x->nazwa << std::endl;
 		
 	}
 	suma += ostatni;
@@ -387,7 +390,6 @@ miasto * minimalnemiasto(miasto*prootm)
 {
 	if (not prootm)
 		return nullptr;
-
 	if (prootm->plewy)
 		return minimalnemiasto(prootm->plewy);
 	return prootm;
