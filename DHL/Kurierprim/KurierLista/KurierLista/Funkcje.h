@@ -15,12 +15,10 @@ struct polaczenia
 struct miasto
 {
 	int nazwa;
-	bool odwiedzone;
 	polaczenia *pDrogi;
 	miasto *pnext;
 	miasto *pprev;
 };
-
 
 void dodajdomiast(miasto *& pHeadmiast, miasto *& pTailmiast, const int skad, const int dokad, const double droga);
 //Funkcja dodaje miasto do listy
@@ -47,15 +45,25 @@ void wypiszpol(polaczenia * proot, int wciecie);
 
 void wypiszodkon(miasto * ptail);
 
-void usunMiasto(miasto *& pHeadmiast, miasto *& pTailmiast, miasto * dousuniecia);
+void usunMiasto(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& dousuniecia);
 
-void przenies(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto * doprzeniesienia);
+void przenies(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto *& doprzeniesienia);
 
 void usundrzewopol(polaczenia *& pDrogi);
 
 void dodajmiastojakoelement(miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto *& doprzeniesienia, polaczenia *& drogiprzenies);
 
-miasto *NajblizszeMiasto(polaczenia *pDrogi, miasto * pHeadmiast);
+miasto *NajblizszeMiasto(polaczenia *pDrogi, miasto * pHeadmiast,  miasto * Start, double & droga);
+
+miasto * nastepnyistniejacy(polaczenia *pDrogi, polaczenia *Aktualny, miasto * pHeadmiast, double & droga);
+
+miasto * nastepnyistniejacynazwa(polaczenia *pDrogi, int nazwa, double & droga, miasto * pHeadmiast);
+
+void PrzyblizonaTrasaKuriera(double & przebytadroga, miasto *& pHeadmiast, miasto *& pTailmiast, miasto * Poprzednie, miasto * Aktualne, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto * Start);
+
+bool PlikWyjsciowy(miasto * pHeadmiast, double droga, const std::string & output);
+
+void usunwszystko(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone);
 
 #endif
 

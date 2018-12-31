@@ -24,6 +24,7 @@ void dodajmiastojakoelement(miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone
 	
 	kopiamiasta->pprev = pTailOdwiedzone;
 	kopiamiasta->pnext = nullptr;
+	kopiamiasta->pDrogi = kopiadrog;
 	pTailOdwiedzone->pnext = kopiamiasta;
 	pTailOdwiedzone = kopiamiasta;
 	return;
@@ -78,6 +79,7 @@ bool wczytaj(miasto *& pHeadmiast, miasto *& pTailmiast, const std::string & naz
 				{
 					droga = temp;
 					licz = 0;
+					//std::cout << skad << " " << dokad << " " << droga << std::endl;
 					dodajdomiast(pHeadmiast, pTailmiast, skad, dokad, droga);
 					break;
 				}
@@ -131,7 +133,7 @@ void dodajdomiast(miasto *& pHeadmiast, miasto *& pTailmiast,  const int skad, c
 {
 	if (not pHeadmiast)//Lista jest pusta
 	{
-		pHeadmiast = new miasto{ skad,false, 0 , 0 , 0 }; 
+		pHeadmiast = new miasto{ skad, 0 , 0 , 0 }; 
 		pTailmiast = pHeadmiast;
 		dodajdopol(pHeadmiast->pDrogi, dokad, droga);
 		return;
@@ -147,12 +149,12 @@ void dodajdomiast(miasto *& pHeadmiast, miasto *& pTailmiast,  const int skad, c
 		p = p->pnext;
 	}
 
-		auto temp = pTailmiast;
-
-		auto wstaw = new miasto{ skad,false,  0,0, pTailmiast };
+		auto wstaw = new miasto{ skad,  0,0, pTailmiast};
+		dodajdopol(wstaw->pDrogi, dokad, droga);
 		pTailmiast->pnext = wstaw;
 		pTailmiast = wstaw;
-		dodajdopol(pTailmiast->pDrogi, dokad, droga);
+		
+		return;
 	
 }
 
@@ -215,7 +217,7 @@ void wypiszpol(polaczenia * proot, int wciecie)
 	}
 }
 
-void usunMiasto(miasto *& pHeadmiast, miasto *& pTailmiast, miasto * dousuniecia) 
+void usunMiasto(miasto *& pHeadmiast, miasto *& pTailmiast, miasto * &dousuniecia) 
 {
 	if (not pHeadmiast)
 	{
@@ -224,20 +226,16 @@ void usunMiasto(miasto *& pHeadmiast, miasto *& pTailmiast, miasto * dousuniecia
 
 	if (pHeadmiast == dousuniecia)
 	{
-		auto temp = pHeadmiast->pnext;
-	//	usundrzewopol(pHeadmiast->pDrogi);
-		//delete pHeadmiast;
-		//temp->pprev = nullptr;
-		pHeadmiast = temp;
+		pHeadmiast = pHeadmiast->pnext;
+		if(pHeadmiast)
+			pHeadmiast->pprev = nullptr;
 		return;
 	}
 	if (pTailmiast == dousuniecia)
 	{
-		auto temp = pTailmiast->pprev;
-		//usundrzewopol(pTailmiast->pDrogi);
-		//delete pTailmiast;
-		//temp->pnext = nullptr;
-		pTailmiast = temp;
+		pTailmiast = pTailmiast->pprev;
+		if(pTailmiast)
+		pTailmiast->pnext = nullptr;
 		return;
 	}
 	auto temp = pHeadmiast;
@@ -289,7 +287,7 @@ void wypiszodkon(miasto * ptail)
 	std::cout << "STOP" << std::endl;
 }
 
-void przenies(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto * doprzeniesienia)
+void przenies(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto *& doprzeniesienia)
 {
 	if (not pHeadmiast)
 		return;
@@ -300,44 +298,204 @@ void przenies(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdwiedz
 		{
 			usunMiasto(pHeadmiast, pTailmiast, p);
 			dodajmiastojakoelement(pHeadOdwiedzone, pTailOdwiedzone, p, p->pDrogi);
-			
 			return;
 		}
 		p = p->pnext;
 	}
+	return;
 }
 
-miasto *NajblizszeMiasto(polaczenia *pDrogi, miasto * pHeadmiast)
+miasto *NajblizszeMiasto(polaczenia *pDrogi, miasto * pHeadmiast, miasto * Start, double & droga)
 {
-	if (not pDrogi || pDrogi->dokad->odwiedzone)
+	if (not pDrogi)
 		return nullptr;
 	if (not pDrogi->plewy)
 	{
-		if (not pDrogi->odwiedzone) //NIE odwiedzone
+		if (pDrogi->dokad == Start->nazwa && pHeadmiast == nullptr) // do przeniesiena jeden element i konczymy z tym
 		{
-			pDrogi->odwiedzone == true;
-			return znajdzpoNazwie(pHeadmiast, pDrogi->dokad);
+			droga = pDrogi->droga;
+			return Start;
 		}
-
+		miasto * najblizsze = znajdzpoNazwie(pHeadmiast, pDrogi->dokad);
+		droga = pDrogi->droga;
+		if (!najblizsze)
+			najblizsze = nastepnyistniejacy(pDrogi, pDrogi, pHeadmiast, droga);
+		return najblizsze;
 	}
-		
-	while (pDrogi->plewy && not pDrogi->plewy->odwiedzone)
-		pDrogi = pDrogi->plewy;
+	else
+	{
+		polaczenia * p = pDrogi;
+		while (p->plewy)
+			p = p->plewy;
+		if (p->dokad == Start->nazwa && pHeadmiast->pnext == nullptr) // do przeniesiena jeden element i konczymy z tym
+			return Start;
+		miasto * najblizsze = znajdzpoNazwie(pHeadmiast, p->dokad);
+		droga = p->droga;
+		if (!najblizsze)
+			najblizsze = nastepnyistniejacy(pDrogi, p, pHeadmiast, droga);
+		return najblizsze;
+	}
 
-	pDrogi->odwiedzone == true;
-	return znajdzpoNazwie(pHeadmiast, pDrogi->dokad);
 }
 	
-void PrzyblizonaTrasaKuriera(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& Poprzednie, miasto *& Aktualne, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, double & PrzebytaDroga)
+void PrzyblizonaTrasaKuriera(double & przebytadroga, miasto *& pHeadmiast, miasto *& pTailmiast, miasto * Poprzednie, miasto * Aktualne, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto * Start)
 {
-	while (pHeadmiast)
+	if (not Aktualne || not pHeadmiast)
+		return;
+		
+	double droga = 0;
+	Poprzednie = Aktualne;
+	przenies(pHeadmiast, pTailmiast, pHeadOdwiedzone, pTailOdwiedzone, Poprzednie);
+	Aktualne = NajblizszeMiasto(Poprzednie->pDrogi, pHeadmiast, Start, droga);
+
+	PrzyblizonaTrasaKuriera(przebytadroga, pHeadmiast, pTailmiast, Poprzednie, Aktualne, pHeadOdwiedzone, pTailOdwiedzone, Start);
+
+	if (not pHeadmiast)
+		przebytadroga += droga;
+		
+	while (Aktualne && pHeadmiast)
 	{
-		miasto* Krok = NajblizszeMiasto(Aktualne->pDrogi, pHeadmiast);
-		if (not Krok)
-		{
-			Aktualne->od
-		}
+		przenies(pHeadOdwiedzone, pTailOdwiedzone, pHeadmiast, pTailmiast, Aktualne);
+		Aktualne = nastepnyistniejacynazwa(Poprzednie->pDrogi, Aktualne->nazwa,droga, pHeadmiast);	
+		PrzyblizonaTrasaKuriera(przebytadroga, pHeadmiast, pTailmiast, Poprzednie, Aktualne, pHeadOdwiedzone, pTailOdwiedzone, Start);
+		if (not pHeadmiast)
+			przebytadroga += droga;
 	}
 
-
+	return;
+	
 }
+
+miasto * nastepnyistniejacy(polaczenia *pDrogi, polaczenia * Aktualny, miasto * pHeadmiast, double & droga)
+{
+	if (not pDrogi || not Aktualny)
+		return nullptr;
+	if (Aktualny->pprawy != nullptr) // przeskocz na prawy i do oporu w lewo
+	{
+		Aktualny = Aktualny->pprawy;
+		while (Aktualny->plewy)
+			Aktualny = Aktualny->plewy;
+		miasto * dozwrotu = znajdzpoNazwie(pHeadmiast, Aktualny->dokad);
+		if (dozwrotu)
+		{
+			droga = Aktualny->droga;
+			return dozwrotu;
+		}
+		else
+		{
+			miasto * proba = nastepnyistniejacy(pDrogi, Aktualny, pHeadmiast,droga);
+			return proba;
+		}
+	}
+	else
+	{
+		while (Aktualny->rodzic) //idz do gory az nie element nie bedzie lewym potomkiem
+		{
+			if (Aktualny->rodzic->plewy == Aktualny)
+			{
+				miasto * dozwrotu = znajdzpoNazwie(pHeadmiast, Aktualny->rodzic->dokad);
+				if (dozwrotu)
+				{
+					droga = Aktualny->rodzic->droga;
+					return dozwrotu;
+				}
+				else
+				{
+					miasto * proba = nastepnyistniejacy(pDrogi, Aktualny->rodzic, pHeadmiast, droga);
+					return proba;
+				}
+			}
+			Aktualny = Aktualny->rodzic;
+		}
+		return nullptr; //brak potomka
+	}	
+}
+
+miasto * nastepnyistniejacynazwa(polaczenia *pDrogi, int nazwa, double & droga, miasto * pHeadmiast)//jak droga rowna to po prawo jest
+{
+	if(not pDrogi || not pHeadmiast)
+		return nullptr;
+	if (droga == pDrogi->droga && nazwa == pDrogi->dokad)
+	{
+		miasto * dozwrotu = nastepnyistniejacy(pDrogi, pDrogi, pHeadmiast, droga);
+		return dozwrotu;
+	}
+	if (droga == pDrogi->droga && nazwa != pDrogi->dokad)//dwa miasta o tej samej wartosci polaczenia
+	{
+		if (pDrogi->pprawy)
+		{
+			miasto * dozwrotu = nastepnyistniejacy(pDrogi, pDrogi->pprawy, pHeadmiast, droga);
+			return dozwrotu;
+		}
+		else
+			return nullptr;//celem tej f jest znalezienie elementu a nastepnie wywolanie kolejnej f znajdujacej nastepnik, jezeli droga sie zgadza a nazwa nie i pprawy nie istnieje to znacyz ze takiego miasta nie ma
+	}
+	if (droga < pDrogi->droga)
+	{
+		if (pDrogi->plewy)
+		{
+			miasto * dozwrotu = nastepnyistniejacynazwa(pDrogi->plewy, nazwa, droga, pHeadmiast);
+			return dozwrotu;
+		}
+		else
+			return nullptr;
+	}
+	else
+	{
+		if (pDrogi->pprawy)
+		{
+			miasto * dozwrotu = nastepnyistniejacynazwa(pDrogi->pprawy, nazwa, droga, pHeadmiast);
+			return dozwrotu;
+		}
+		else
+			return nullptr;
+	}
+	return nullptr;//nic nie znalazl
+}
+
+bool PlikWyjsciowy(miasto * pHeadmiast, double droga, const std::string & output)
+{
+	std::ofstream plik;
+	plik.open(output);
+	if (not plik.good())
+		return false;
+	int startowe = pHeadmiast->nazwa;
+	plik << "Kolejnosc odwiedzania miast: ";
+	while (pHeadmiast)
+	{
+		plik << pHeadmiast->nazwa;
+		plik << "->";
+		pHeadmiast = pHeadmiast->pnext;
+	}
+	plik << startowe << std::endl;
+	plik << "Przebyta droga: " << droga << std::endl;
+	plik.close();
+	return true;
+}
+
+void usunwszystko(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone)
+{
+	miasto * p = pHeadmiast;
+	while (p)
+	{
+		auto temp = p->pnext;
+		usundrzewopol(p->pDrogi);
+		p = temp;
+	}
+
+	pHeadmiast = nullptr;
+	pTailmiast = nullptr;
+
+	miasto * p2 = pHeadOdwiedzone;
+	while (p2)
+	{
+		auto temp = p2->pnext;
+		usundrzewopol(p2->pDrogi);
+		p2 = temp;
+	}
+	pHeadOdwiedzone = nullptr;
+	pTailOdwiedzone = nullptr;
+
+	return;
+}
+
