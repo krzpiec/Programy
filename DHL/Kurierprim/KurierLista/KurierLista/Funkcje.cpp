@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <iomanip> 
 #include <vector>
-//#include <vld.h>
+#include <vld.h>
 #include "Funkcje.h"
 
 void dodajmiastojakoelement(miasto *& pHeadOdwiedzone, miasto *& pTailOdwiedzone, miasto *& kopiamiasta, polaczenia *& kopiadrog)
@@ -350,6 +350,12 @@ void PrzyblizonaTrasaKuriera(double & przebytadroga, miasto *& pHeadmiast, miast
 
 	PrzyblizonaTrasaKuriera(przebytadroga, pHeadmiast, pTailmiast, Poprzednie, Aktualne, pHeadOdwiedzone, pTailOdwiedzone, Start);
 
+	/*if (not pHeadmiast && Aktualne == nullptr)
+	{
+		przenies(pHeadOdwiedzone, pTailOdwiedzone, pHeadmiast, pTailmiast, Poprzednie);
+		return;
+	}*/
+
 	if (not pHeadmiast)
 		przebytadroga += droga;
 		
@@ -464,7 +470,7 @@ bool PlikWyjsciowy(miasto * pHeadmiast, double droga, const std::string & output
 	while (pHeadmiast)
 	{
 		plik << pHeadmiast->nazwa;
-		plik << "->";
+		plik << " - ";
 		pHeadmiast = pHeadmiast->pnext;
 	}
 	plik << startowe << std::endl;
@@ -480,6 +486,7 @@ void usunwszystko(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdw
 	{
 		auto temp = p->pnext;
 		usundrzewopol(p->pDrogi);
+		delete p;
 		p = temp;
 	}
 
@@ -491,6 +498,7 @@ void usunwszystko(miasto *& pHeadmiast, miasto *& pTailmiast, miasto *& pHeadOdw
 	{
 		auto temp = p2->pnext;
 		usundrzewopol(p2->pDrogi);
+		delete p2;
 		p2 = temp;
 	}
 	pHeadOdwiedzone = nullptr;

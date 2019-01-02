@@ -27,7 +27,7 @@ void dodajdopol(polaczenia *& pkorzen, const int dokad, const double droga);
 //Funckja do drzewa polaczen dodaje kolejne (uzyte w dodajdomiast);
 
 void dodajdopol(polaczenia *& pkorzen, const int dokad, const double droga);
-//Funckja wypisuje drzewo polaczen danego miasta (testy)
+//Funckja wypisuje drzewo polaczen danego miasta 
 
 bool wczytaj(miasto *& pHeadmiast, miasto *& pTailmiast, const std::string & nazwa);
 //Funkcja wczytuje dane z pliku wejscowego do drzewa; 
