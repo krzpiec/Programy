@@ -350,11 +350,11 @@ void PrzyblizonaTrasaKuriera(double & przebytadroga, miasto *& pHeadmiast, miast
 
 	PrzyblizonaTrasaKuriera(przebytadroga, pHeadmiast, pTailmiast, Poprzednie, Aktualne, pHeadOdwiedzone, pTailOdwiedzone, Start);
 
-	/*if (not pHeadmiast && Aktualne == nullptr)
-	{
-		przenies(pHeadOdwiedzone, pTailOdwiedzone, pHeadmiast, pTailmiast, Poprzednie);
-		return;
-	}*/
+	//if (not pHeadmiast && Aktualne == nullptr)
+	//{
+	//	przenies(pHeadOdwiedzone, pTailOdwiedzone, pHeadmiast, pTailmiast, Poprzednie);
+	//	return;
+	//}
 
 	if (not pHeadmiast)
 		przebytadroga += droga;
